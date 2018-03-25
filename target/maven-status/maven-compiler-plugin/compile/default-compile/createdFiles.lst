@@ -1,0 +1,6 @@
+libs/WebElementOnPage.class
+libs/ParentTest.class
+libs/ConfigData.class
+pages/PhonePage.class
+pages/MainPage.class
+pages/SearchPage.class
