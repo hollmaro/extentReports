@@ -17,6 +17,7 @@ public class TestLoginFormEntering extends ParentTest {
 
     @Test
     public void TestLogin() {
+        extentlogger = extent.startTest(name.getMethodName());
         mainPage = new MainPage(driver);
         mainPage.openMainPage();
         Assert.assertTrue(
@@ -33,5 +34,8 @@ public class TestLoginFormEntering extends ParentTest {
     @After
     public void tearDown() {
         mainPage.closeBrowser();
+        extent.endTest(extentlogger);
+        extent.flush();
+        extent.close();
     }
 }

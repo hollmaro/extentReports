@@ -22,8 +22,7 @@ public class MainPage {
         log = Logger.getLogger(getClass());
         webElementOnPage = new WebElementOnPage(driver);
         MAIN_PAGE_URL = getCfgValue("MAIN_PAGE_URL");
-        MAIN_PAGE_TITLE =
-                "Интернет-магазин ROZETKA™: фототехника, видеотехника, аудиотехника, компьютеры и компьютерные комплектующие";
+        MAIN_PAGE_TITLE = getCfgValue("MAIN_PAGE_TITLE");
     }
 
     /**

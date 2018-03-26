@@ -35,7 +35,7 @@ public class WebElementOnPage {
 	 */
 	public void openBrowserAndUrl(String url) {
 		try {
-			driver.manage().window().maximize();
+			//driver.manage().window().maximize();
 			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 			driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
