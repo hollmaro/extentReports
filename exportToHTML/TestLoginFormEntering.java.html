@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>TestLoginFormEntering.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+TestLoginFormEntering.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">import </span><span class="s1">com.relevantcodes.extentreports.LogStatus; 
+</span><span class="s0">import </span><span class="s1">junit.framework.TestResult; 
+</span><span class="s0">import </span><span class="s1">libs.ParentTest; 
+</span><span class="s0">import </span><span class="s1">org.junit.AfterClass; 
+</span><span class="s0">import </span><span class="s1">org.openqa.selenium.WebElement; 
+</span><span class="s0">import </span><span class="s1">org.openqa.selenium.support.FindBy; 
+</span><span class="s0">import </span><span class="s1">pages.MainPage; 
+</span><span class="s0">import </span><span class="s1">org.junit.After; 
+</span><span class="s0">import </span><span class="s1">org.junit.Assert; 
+</span><span class="s0">import </span><span class="s1">org.junit.Test; 
+</span><span class="s0">import </span><span class="s1">java.net.MalformedURLException; 
+ 
+</span><span class="s2">/** 
+ * Created by roman on 3/10/17. 
+ */</span><span class="s1"> 
+</span><span class="s0">public class </span><span class="s1">TestLoginFormEntering </span><span class="s0">extends </span><span class="s1">ParentTest { 
+    MainPage mainPage; 
+ 
+    </span><span class="s0">public </span><span class="s1">TestLoginFormEntering(String browser) </span><span class="s0">throws </span><span class="s1">MalformedURLException { 
+        </span><span class="s0">super</span><span class="s1">(browser); 
+    } 
+ 
+    @Test 
+    </span><span class="s0">public void </span><span class="s1">TestLogin() { 
+        extentlogger = extent.startTest(name.getMethodName()); 
+        mainPage = </span><span class="s0">new </span><span class="s1">MainPage(driver); 
+        mainPage.openMainPage(); 
+        Assert.assertTrue( 
+                </span><span class="s3">&quot;Check is title correct! &quot;</span><span class="s1">, mainPage.getMainTitle().equals(driver.getTitle())); 
+        Assert.assertTrue(</span><span class="s3">&quot;Check is login form present&quot;</span><span class="s1">, 
+                mainPage.clickEnterInCabinet() &amp;&amp; 
+                        mainPage.isLoginFormPresent() 
+        ); 
+ 
+ 
+    } 
+     
+     
+     
+     
+ 
+    @After 
+    </span><span class="s0">public void </span><span class="s1">tearDown() </span><span class="s0">throws </span><span class="s1">MalformedURLException { 
+        mainPage.closeBrowser(); 
+        extent.endTest(extentlogger); 
+        extent.flush(); 
+        extent.close(); 
+ 
+ 
+    } 
+    @AfterClass 
+    </span><span class="s0">public static void </span><span class="s1">end(){ 
+ 
+    } 
+} 
+</span></pre>
+</body>
+</html>

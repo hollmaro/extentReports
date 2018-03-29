@@ -2,9 +2,13 @@ package libs;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import junit.framework.Test;
+import junit.framework.TestResult;
 import org.apache.log4j.Logger;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
@@ -29,7 +33,7 @@ import static libs.ConfigData.*;
 public class ParentTest {
     public WebDriver driver;
     public Logger log = Logger.getLogger(getClass());
-    public ExtentReports extent = new ExtentReports ("/test-output/ExtentReport.html", true);
+    public static ExtentReports extent = new ExtentReports("test-output/ExtentReport.html", true);
     public ExtentTest extentlogger = extent.startTest(getClass().toString());
 
     @Rule
@@ -44,27 +48,19 @@ public class ParentTest {
     }
 
     public ParentTest(String browser) throws MalformedURLException {
-        //-------------Configuration driver path for WIN-----------------
         Map<String, Object> prefs = new HashMap<String, Object>();
         prefs.put("safebrowsing.enabled", "true");
-
-      /*System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
-      System.setProperty("webdriver.ie.driver", "C:\\IEDriverServer.exe");
-      System.setProperty("webdriver.edge.driver", "C:\\MicrosoftWebDriver.exe");*/
         if (browser.equals("fireFox")) {
             WebDriverManager.firefoxdriver().setup();
             this.driver = new FirefoxDriver();
-        }
-        else if (browser.equals("chrome"))
-        {
+        } else if (browser.equals("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.setExperimentalOption("prefs", prefs);
             options.addArguments("disable-infobars");
             this.driver = new ChromeDriver(options);
             driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
-        }
-        else if (browser.equals("edge")) {
+        } else if (browser.equals("edge")) {
             WebDriverManager.edgedriver().setup();
             this.driver = new EdgeDriver();
         }
@@ -75,15 +71,14 @@ public class ParentTest {
         extent.loadConfig(new File("extent-config.xml"));
 
 
-        log.info(" ----- " + driver.getClass() + " -------" );
-
+        log.info(" ----- " + driver.getClass() + " -------");
 
 
     }
 
     @Before
-    public void setUp(){
-        log.info("Test - " +  name.getMethodName() + " - started");
+    public void setUp() {
+        log.info("Test - " + name.getMethodName() + " - started");
     }
 
 

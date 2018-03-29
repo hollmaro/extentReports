@@ -1,4 +1,9 @@
+import com.relevantcodes.extentreports.LogStatus;
+import junit.framework.TestResult;
 import libs.ParentTest;
+import org.junit.AfterClass;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import pages.MainPage;
 import org.junit.After;
 import org.junit.Assert;
@@ -22,20 +27,29 @@ public class TestLoginFormEntering extends ParentTest {
         mainPage.openMainPage();
         Assert.assertTrue(
                 "Check is title correct! ", mainPage.getMainTitle().equals(driver.getTitle()));
-        if (mainPage.isNotificationPanelIsPresent()) {
-            mainPage.clickOtkazatsaOtUvedomlienij();
-        }
         Assert.assertTrue("Check is login form present",
-                mainPage.clickEnterInCabinet()&&
-                mainPage.isLoginFormPresent()
+                mainPage.clickEnterInCabinet() &&
+                        mainPage.isLoginFormPresent()
         );
+
+
     }
 
+
+
+
+
     @After
-    public void tearDown() {
+    public void tearDown() throws MalformedURLException {
         mainPage.closeBrowser();
         extent.endTest(extentlogger);
         extent.flush();
         extent.close();
+
+
+    }
+    @AfterClass
+    public static void end(){
+
     }
 }
